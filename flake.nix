@@ -33,6 +33,7 @@
       in
       {
         defaultPackage = myRustBuild;
+        default = self.defaultPackage;
         devShell = pkgs.mkShell {
           buildInputs =
             [ (rustVersion.override { extensions = [ "rust-src" ]; }) pkgs.pkg-config pkgs.openssl ];
