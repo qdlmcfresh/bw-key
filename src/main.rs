@@ -156,7 +156,7 @@ fn keyfile_ed25519() {
     let passphrase = "123456";
     let key = parse_keystr(ssh_key.as_bytes(), Some(passphrase)).unwrap();
 
-    let ssh_socket_path = env::var("SSH_AUTH_SOCK").map_or(String::new(), |key| key);
+    let ssh_socket_path = std::env::var("SSH_AUTH_SOCK").map_or(String::new(), |key| key);
     let mut client = SshSock::new().unwrap();
     let identity = Identity {
         private_key: key,
