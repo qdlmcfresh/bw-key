@@ -25,7 +25,7 @@
             "bw-key"; # make this what ever your cargo.toml package.name is
           version = "0.1.1";
           src = ./.; # the folder with the cargo.toml
-          nativeBuildInputs = [ pkgs.pkg-config ]; # just for the host building the package
+          nativeBuildInputs = [ pkgs.pkg-config pkgs.perl]; # just for the host building the package
           buildInputs = [ pkgs.openssl ]; # packages needed by the consumer
           cargoLock.lockFile = ./Cargo.lock;
           doCheck = false;
@@ -36,7 +36,7 @@
         default = self.defaultPackage;
         devShell = pkgs.mkShell {
           buildInputs =
-            [ (rustVersion.override { extensions = [ "rust-src" ]; }) pkgs.pkg-config pkgs.openssl ];
+            [ (rustVersion.override { extensions = [ "rust-src" ]; }) pkgs.pkg-config pkgs.openssl pkgs.perl ];
         };
       });
 
